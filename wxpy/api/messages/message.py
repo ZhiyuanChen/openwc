@@ -223,7 +223,7 @@ class Message(object):
 
         from wxpy import MP
         if self.type == SHARING and isinstance(self.sender, MP):
-            tree = ETree.fromstring(self.raw['Content'])
+            tree = ETree.fromstring(self.raw['Content'].encode('utf8'))
             # noinspection SpellCheckingInspection
             items = tree.findall('.//mmreader/category/item')
 
