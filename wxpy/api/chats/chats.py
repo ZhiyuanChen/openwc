@@ -5,8 +5,8 @@ import logging
 import time
 from collections import Counter
 
-from wxpy.utils import match_attributes, match_name
 from wxpy.compatible import *
+from wxpy.utils import match_attributes, match_name
 
 logger = logging.getLogger(__name__)
 
@@ -27,9 +27,9 @@ class Chats(list):
     def search(self, keywords=None, **attributes):
         """
         在聊天对象合集中进行搜索
-        
-        ..  note:: 
-    
+
+        ..  note::
+
             | 搜索结果为一个 :class:`Chats (列表) <Chats>` 对象
             | 建议搭配 :any:`ensure_one()` 使用
 
@@ -85,7 +85,7 @@ class Chats(list):
 
         def top_n_text(attr, n):
             top_n = list(filter(lambda x: x[0], stats[attr].most_common()))[:n]
-            top_n = ['{}: {} ({:.2%})'.format(k, v, v / len(self)) for k, v in top_n]
+            top_n = ['{}: {} ({:.2%})'.format(k, v, float(v) / len(self)) for k, v in top_n]
             return '\n'.join(top_n)
 
         stats = self.stats()
@@ -116,9 +116,9 @@ class Chats(list):
 
             text += '男性: {males} ({male_rate:.1%})\n女性: {females} ({female_rate:.1%})\n\n'.format(
                 males=males,
-                male_rate=males / len(self),
+                male_rate=float(males) / len(self),
                 females=females,
-                female_rate=females / len(self),
+                female_rate=float(females) / len(self),
             )
 
         if top_provinces and self:
