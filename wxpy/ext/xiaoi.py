@@ -26,7 +26,7 @@ class XiaoI(object):
     def __init__(self, key, secret):
         """
         | 需要通过注册获得 key 和 secret
-        | 免费申请: http://cloud.xiaoi.com/
+        | 免费申请: http://open.xiaoi.com/
 
         :param key: 你申请的 key
         :param secret: 你申请的 secret
@@ -38,7 +38,7 @@ class XiaoI(object):
         self.realm = "xiaoi.com"
         self.http_method = "POST"
         self.uri = "/ask.do"
-        self.url = "http://nlp.xiaoi.com/ask.do?platform=custom"
+        self.url = "http://robot.open.xiaoi.com/ask.do"
 
         xauth = self._make_http_header_xauth()
 
